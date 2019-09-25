@@ -6,6 +6,7 @@ import {
 } from './styles';
 
 export default function DisplayCommunication({messages}) {
+
   return (
     <ChatWrapper>
       {messages.map(message => {

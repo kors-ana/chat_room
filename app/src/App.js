@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Login from './components/login/Login';
 import MessagingPanel from './components/messages/MessagingPanel';
+import Panel from './components/messages/Panel';
 
 function App() {
   const [userName, setUserName] = useState(null);
@@ -15,7 +16,8 @@ function App() {
       {!userName ? 
       <Login setUserName={setUserNameHandler} />
       : 
-      <MessagingPanel userName={userName} />
+      // <MessagingPanel userName={userName} />
+      <Panel userName={userName} />
       }
     </div>
   );
