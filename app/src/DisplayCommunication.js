@@ -5,10 +5,9 @@ export default function DisplayCommunication({messages}) {
     <div id="displayCommunication">
       {messages.map(message => {
         return (
-          <>
-            <div>{message.userName}</div>
-            <div>{message.message}</div>
-          </>
+
+            <div key={message.id}>{message.userName}:{message.message}</div>
+
         )
       })}
     </div>
