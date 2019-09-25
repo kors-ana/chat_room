@@ -23,11 +23,11 @@ export default function MessagingPanel({userName}) {
 
       setMessage({...data, id: getRandomIntInclusive(1, 1000)});
     }
-  }, [connection.onmessage])
+  }, [])
 
   useEffect(() => {
     if (Object.keys(message).length) setMessages([...messages, message])
-  }, [message, messages])
+  }, [message])
 
   return (
     <>

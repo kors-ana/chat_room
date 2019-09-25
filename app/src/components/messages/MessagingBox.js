@@ -1,4 +1,8 @@
-import React from 'react'
+import React from 'react';
+
+import {
+  Wrapper
+} from './styles';
 
 export default function MessagingBox({getMessage}) {
 
@@ -11,8 +15,8 @@ export default function MessagingBox({getMessage}) {
   }
 
   return (
-    <div id="messagingBox">
-      <textarea onKeyDown={messageHandler} ></textarea>
-    </div>
+    <Wrapper>
+      <textarea onKeyDown={messageHandler} placeholder="enter your message..."></textarea>
+    </Wrapper>
   )
 }

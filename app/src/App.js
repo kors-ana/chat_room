@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import Login from './Login';
-import './App.css';
-import MessagingPanel from './MessagingPanel';
+import Login from './components/login/Login';
+import MessagingPanel from './components/messages/MessagingPanel';
 
 function App() {
   const [userName, setUserName] = useState(null);
