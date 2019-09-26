@@ -1,24 +1,32 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import DisplayCommunication from './DisplayCommunication';
 import MessagingBox from './MessagingBox';
 
 export default function MessagingPanel({userName}) {
 
   const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState({})
+  const [connection, setConnection] = useState(null)
+  
+function onMessageHandler(message) {
+    const data = JSON.parse(message.data)
+    setMessage({...data, id: getRandomIntInclusive(1, 1000)})        
+}
 
-  const connection = new WebSocket('ws://localhost:9090/');
+  useEffect(() => {
+    const newConnection = new WebSocket('ws://localhost:9090/')
+    newConnection.onmessage = onMessageHandler
+    setConnection(newConnection)
+  }, [])
+
+  useEffect(() => {
+    if (Object.keys(message).length) setMessages([...messages, message])        
+  }, [message])
 
   const getMessage =  (message) => {
     const data = {userName, message}
-     connection.onopen = () => connection.send(JSON.stringify(data));
+    connection.send(JSON.stringify(data), messages);
   }
-  
-  useEffect(() => {
-    connection.onmessage = message => {
-      const data = JSON.parse(message.data)
-      setMessages([...messages, data])
-    }
-  }, [])
 
   return (
     <>

@@ -16,8 +16,8 @@ function App() {
       {!userName ? 
       <Login setUserName={setUserNameHandler} />
       : 
-      // <MessagingPanel userName={userName} />
-      <Panel userName={userName} />
+      <MessagingPanel userName={userName} />
+      // <Panel userName={userName} />
       }
     </div>
   );

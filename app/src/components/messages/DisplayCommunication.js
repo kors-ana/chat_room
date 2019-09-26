@@ -17,3 +17,5 @@ export default function DisplayCommunication({messages}) {
     </ChatWrapper>
   )
 }
+
+

@@ -6,26 +6,26 @@ import MessagingBox from './MessagingBox';
 class Panel extends Component {
   state = {
     messages: [],
+    connection: null,
   }
   
-  connection = new WebSocket('ws://localhost:9090/');
-
   componentDidMount() {
-    this.connection.onmessage = message => {
-      
+    const connection = new WebSocket('ws://localhost:9090/')
+
+    connection.onmessage = message => {  
       const data = JSON.parse(message.data)
       this.setState({messages: [...this.state.messages, data]})
+  };
 
-    }
+  this.setState({ ...this.state, connection })
   }
 
   getMessage = (message) => {
     const data = {userName: this.props.userName, message}
-    this.connection.send(JSON.stringify(data));
-  }
+    this.state.connection.send(JSON.stringify(data));
+  };
 
   render() {
-  console.log("TCL: Panel -> messages", this.state.messages)
 
     return (
       <>
